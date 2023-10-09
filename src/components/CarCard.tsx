@@ -1,8 +1,8 @@
 import React from 'react'
-import { Spacer, Text, Flex, Row, Link } from 'vcc-ui';
+import { Spacer, Text, Flex, Link } from 'vcc-ui';
 import { Car } from '../types/car.interface';
 import Image from 'next/image';
-import styles from '../../public/css/carCard.module.css'
+import styles from '../../public/css/components/carCard.module.css'
 
 
 interface CardProps {
