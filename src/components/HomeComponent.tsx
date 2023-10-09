@@ -10,7 +10,7 @@ export const HomeComponent: React.FC = () => {
 
   const {cars}  = useCars();
 
-  const onClickLeft = () => {
+  const onClickNavigate = (left: boolean) => {
     let cardList = document.getElementById("card-list");
     let card = cardList?.firstElementChild;
     let cardSize = (card?.clientWidth ?? 0) + 24;
@@ -19,22 +19,8 @@ export const HomeComponent: React.FC = () => {
 
     console.log({scrollSize, scrollPosition, cardSize})
 
-    if(scrollPosition >= cardSize){
-      cardList?.scrollTo({ left: scrollPosition - cardSize})
-    }
-  }
-  const onClickRight = () => {
-    let cardList = document.getElementById("card-list");
-    let card = cardList?.firstElementChild;
-    let cardSize = (card?.clientWidth ?? 0) + 24;
-    let scrollSize = cardList?.scrollWidth ?? 0;
-    let scrollPosition = cardList?.scrollLeft ?? 0;
-
-    console.log({scrollSize, scrollPosition, cardSize})
-
-    if(scrollPosition + cardSize <= scrollSize){
-      cardList?.scrollTo({ left: scrollPosition + cardSize})
-    }
+    if(left) cardList?.scrollTo({ left: scrollPosition - cardSize})
+    else cardList?.scrollTo({ left: scrollPosition + cardSize})
   }
 
   return (
@@ -47,7 +33,7 @@ export const HomeComponent: React.FC = () => {
         car={car}
         />)}
       </div>
-      <ButtonsPages onClickLeft={onClickLeft} onClickRight={onClickRight}/>
+      <ButtonsPages onClickLeft={() => onClickNavigate(true)} onClickRight={() => onClickNavigate(false)}/>
     </div>
     )
 };
