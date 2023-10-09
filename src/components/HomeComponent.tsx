@@ -4,7 +4,7 @@ import { useCars } from '../hooks/useCars';
 import { CarCard } from "./CarCard";
 import styles from '../../public/css/home.module.css'
 import Spacer from "./Spacer";
-import ButtonsPages from "./ButtonsPages";
+import ButtonsPages from "./PaginationDesktop";
 
 export const HomeComponent: React.FC = () => {
 
