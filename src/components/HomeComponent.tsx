@@ -45,6 +45,8 @@ export const HomeComponent: React.FC = () => {
         car={car}
         />)}
       </div>
+      <Spacer />
+      <Spacer />
       <ButtonsPages 
         onClickLeft={() => onClickNavigate(true)} 
         onClickRight={() => onClickNavigate(false)}/>
