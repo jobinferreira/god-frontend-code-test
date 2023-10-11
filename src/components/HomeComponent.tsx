@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Text } from 'vcc-ui';
+import { SelectInput, Text } from 'vcc-ui';
 import { useCars } from '../hooks/useCars';
 import { CarCard } from "./CarCard";
 import styles from '../../public/css/home.module.css'
@@ -12,6 +12,8 @@ export const HomeComponent: React.FC = () => {
   const {cars}  = useCars();
 
   const [selected, setSelected] = useState(0);
+
+  const [value, setValue] = useState('');
 
   const onClickNavigate = (left: boolean) => {
     let cardList = document.getElementById("card-list");
@@ -39,6 +41,17 @@ export const HomeComponent: React.FC = () => {
     <div className={styles.homeWrapper}>
       <Text variant="cook">Todos os modelos Recharge</Text>
       <Spacer />
+      <SelectInput
+        label={'Model'}
+        value={value}
+        onChange={(e) => setValue(e.target.value)}>
+        {cars.map(car => 
+        <option 
+        key={car.id} 
+        value={car.bodyType}>
+            {car.bodyType}
+        </option>)}
+       </SelectInput >
       <div className={styles.cardsWrapper} id='card-list'>
         {cars.map(car => <CarCard 
         key={car.id}
